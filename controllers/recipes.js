@@ -1,7 +1,7 @@
 import pool from '../db/pg.js';
 export const getAllRecipes = (req, res) => {
  pool
-    .query("SELECT * FROM recipes")
+    .query("SELECT * FROM recipes ORDER BY id")
     .then((data) => res.json({ recipes: data.rows }))
     .catch((err) => console.log(err));
 }

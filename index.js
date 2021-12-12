@@ -3,7 +3,7 @@ import express from 'express';
 import authors from "./routes/authors.js";
 import recipes from './routes/recipes.js';
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 4001;
 
 app.use(express.json());
 app.use("/recipes", recipes);
@@ -12,7 +12,7 @@ app
   .route("/")
   .get((req, res) =>
     res.send(
-      "<h2>Mögliche Endpunkte:</h2><p>/recipes => um alle Rezepte zu sehen</p><p>/authors => um eine Übersicht der Autoren zu sehen</p>"
+      "<h2>Mögliche Endpunkte:</h2><p><a href= http://localhost:4001/recipes>/recipes</a> => detaillierte Übersicht aller Rezepte</p><p><a href= http://localhost:4001/authors>/authors</a> => Übersicht aller Autoren</p>"
     )
   );
 
