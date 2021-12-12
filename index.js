@@ -1,16 +1,18 @@
 import "dotenv/config.js";
 import express from 'express';
+import authors from "./routes/authors.js";
 import recipes from './routes/recipes.js';
 const app = express();
 const port = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use("/recipes", recipes);
+app.use("/authors", authors);
 app
   .route("/")
   .get((req, res) =>
     res.send(
-      "<h2>Mögliche Endpunkte:</h2><p>/title : um alle Rezepttitel zu sehen</p><p>/home_picture : um die Rezeptbilder zu sehen</p>"
+      "<h2>Mögliche Endpunkte:</h2><p>/recipes => um alle Rezepte zu sehen</p><p>/authors => um eine Übersicht der Autoren zu sehen</p>"
     )
   );
 
