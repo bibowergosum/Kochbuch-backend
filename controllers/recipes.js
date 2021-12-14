@@ -9,7 +9,7 @@ export const getAllRecipes = (req, res) => {
  export const getSingleRecipe = (req, res) => {
  const id = req.params.id;
   pool
-    .query(`SELECT * FROM recipes WHERE id=${id}`)
+    .query(`SELECT * FROM recipes WHERE id=$1`, [id])
     .then((data) => res.json(data.rows[0]))
     .catch((err) => console.log(err));
 }

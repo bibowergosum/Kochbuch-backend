@@ -9,7 +9,7 @@ export const getAllAuthors = (req, res) => {
  export const getSingleAuthor = (req, res) => {
  const id = req.params.id;
   pool
-    .query(`SELECT * FROM authors WHERE id=${id}`)
+    .query(`SELECT * FROM authors WHERE id=1$`, [id])
     .then((data) => res.json(data.rows[0]))
     .catch((err) => console.log(err));
 }
