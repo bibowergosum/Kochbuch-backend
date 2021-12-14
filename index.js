@@ -2,9 +2,12 @@ import "dotenv/config.js";
 import express from 'express';
 import authors from "./routes/authors.js";
 import recipes from './routes/recipes.js';
+import cors from "cors";
 const app = express();
 const port = process.env.PORT || 4001;
 
+
+app.use(cors());
 app.use(express.json());
 app.use("/recipes", recipes);
 app.use("/authors", authors);
