@@ -3,7 +3,7 @@ import { createRecipe, getAllRecipes, getSingleRecipe } from '../controllers/rec
 const recipes = express.Router();
 
 recipes.route("/").get(getAllRecipes).post(createRecipe);
-recipes.route("/:id").get(getSingleRecipe);
+recipes.route("/:id").get(getSingleRecipe).delete(deleteSingleRecipe);
 
 
 export default recipes;

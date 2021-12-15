@@ -7,7 +7,7 @@ export const getAdmin = (req, res) => {
 		.query("SELECT * FROM admins WHERE username =$1", [username])
 		.then((data) => {
 			if (data.rowCount === 0) {
-				res.status(404).send('Admin mit dieser username existiert nicht');
+				res.status(404).send('Admin mit diesem Usernamen existiert nicht');
 			} else {
 				res.status(200).json(data.rows[0]);
 			}

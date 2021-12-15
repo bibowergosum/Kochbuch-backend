@@ -1,21 +1,31 @@
-import pool from '../db/pg.js';
+import pool from "../db/pg.js";
 export const getAllRecipes = (req, res) => {
- pool
+  pool
     .query("SELECT * FROM recipes ORDER BY id")
-   .then((data) => res.json({ recipes: data.rows }))
+    .then((data) => res.json({ recipes: data.rows }))
     .catch((err) => console.log(err));
-}
+};
 
- export const getSingleRecipe = (req, res) => {
- const id = req.params.id;
+export const getSingleRecipe = (req, res) => {
+  const id = req.params.id;
   pool
     .query(`SELECT * FROM recipes WHERE id=$1`, [id])
     .then((data) => res.json(data.rows[0]))
     .catch((err) => console.log(err));
-}
+};
 
 export const createRecipe = (req, res) => {
-  const { title, ingredients, instructions, home_picture, home_picture_alt, picture_one, picture_one_alt, picture_two, picture_two_alt } = req.body;
+  const {
+    title,
+    ingredients,
+    instructions,
+    home_picture,
+    home_picture_alt,
+    picture_one,
+    picture_one_alt,
+    picture_two,
+    picture_two_alt,
+  } = req.body;
   pool
     .query(
       "INSERT INTO recipes (title, ingredients, instructions, home_picture, home_picture_alt, picture_one, picture_one_alt, picture_two, picture_two_alt) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);",
@@ -31,6 +41,14 @@ export const createRecipe = (req, res) => {
         picture_two_alt,
       ]
     )
-    .then(data => res.json('hihihi'))
+    .then((data) => res.json("hihihi"))
     .catch((err) => console.log(err));
-    }
+};
+
+export const deleteSingleRecipe = () => {
+  const { id } = req.params.id;
+
+  pool.query('DELETE FROM recipes WHERE id=$1', [id])
+    .then(data => res.send('erfolgreich gelöscht'))
+  .catch(err => res.json(err))
+}
