@@ -16,7 +16,7 @@ const port = process.env.PORT || 4001;
 // 	})
 // );
 
-app.use(cors());
+app.use(cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }));
 app.use(express.json());
 app.use('/recipes', checkUrl, recipes);
 app.use('/authors', checkUrl, authors);
