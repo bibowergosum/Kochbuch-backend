@@ -16,11 +16,19 @@ const port = process.env.PORT || 4001;
 // 	})
 // );
 
-app.use(cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }));
+app.use(
+	cors({
+		origin: [
+			'https://keen-turing-04ea0a.netlify.app/',
+			'https://keen-turing-04ea0a.netlify.app/recipes',
+			'https://keen-turing-04ea0a.netlify.app/admins',
+		],
+	})
+);
 app.use(express.json());
-app.use('/recipes', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), recipes);
-app.use('/authors', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), authors);
-app.use('/admins', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), admins);
+app.use('/recipes', recipes);
+app.use('/authors', authors);
+app.use('/admins', admins);
 app.route('/').get((req, res) =>
 	res.send(
 		`<h2>Mögliche Endpunkte:</h2>
