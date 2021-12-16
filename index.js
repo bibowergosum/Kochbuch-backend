@@ -5,15 +5,15 @@ import express from 'express';
 import authors from './routes/authors.js';
 import recipes from './routes/recipes.js';
 import admins from './routes/admins.js';
-import cors from 'cors';
+// import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 4001;
 
-app.use(
-	cors({
-		origin: 'https://www.section.io',
-	})
-);
+// app.use(
+// 	cors({
+// 		origin: 'https://www.section.io',
+// 	})
+// );
 
 // app.use(cors(corsOptions));
 app.use(express.json());
