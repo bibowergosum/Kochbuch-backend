@@ -6,7 +6,7 @@ import authors from './routes/authors.js';
 import recipes from './routes/recipes.js';
 import admins from './routes/admins.js';
 import { checkUrl } from './middleware/checkUrl.js';
-// import cors from 'cors';
+import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 4001;
 
@@ -16,7 +16,7 @@ const port = process.env.PORT || 4001;
 // 	})
 // );
 
-// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use('/recipes', checkUrl, recipes);
 app.use('/authors', checkUrl, authors);
