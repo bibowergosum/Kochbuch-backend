@@ -9,12 +9,13 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 4001;
 
-const corsOptions = {
-	origin: 'https://keen-turing-04ea0a.netlify.app',
-	// optionsSuccessStatus: 200,
-};
+app.use(
+	cors({
+		origin: 'https://www.section.io',
+	})
+);
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/recipes', recipes);
 app.use('/authors', authors);
