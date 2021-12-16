@@ -9,16 +9,16 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 4001;
 
-const coreOptions = {
+const corsOptions = {
 	origin: 'https://keen-turing-04ea0a.netlify.app',
-	optionsSuccessStatus: 200,
+	// optionsSuccessStatus: 200,
 };
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
-app.use('/recipes', cors(coreOptions), recipes);
-app.use('/authors', cors(coreOptions), authors);
-app.use('/admins', cors(coreOptions), admins);
+app.use('/recipes', cors(corsOptions), recipes);
+app.use('/authors', cors(corsOptions), authors);
+app.use('/admins', cors({ origin: 'https://keen-turing-04ea0a.netlify.app' }), admins);
 app.route('/').get((req, res) =>
 	res.send(
 		`<h2>Mögliche Endpunkte:</h2>
