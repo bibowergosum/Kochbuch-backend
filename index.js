@@ -14,11 +14,11 @@ const corsOptions = {
 	// optionsSuccessStatus: 200,
 };
 
-// app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use('/recipes', cors(corsOptions), recipes);
-app.use('/authors', cors(corsOptions), authors);
-app.use('/admins', cors({ origin: 'https://keen-turing-04ea0a.netlify.app' }), admins);
+app.use('/recipes', recipes);
+app.use('/authors', authors);
+app.use('/admins', admins);
 app.route('/').get((req, res) =>
 	res.send(
 		`<h2>Mögliche Endpunkte:</h2>
