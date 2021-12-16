@@ -18,9 +18,9 @@ const port = process.env.PORT || 4001;
 
 app.use(cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }));
 app.use(express.json());
-app.use('/recipes', checkUrl, recipes);
-app.use('/authors', checkUrl, authors);
-app.use('/admins', checkUrl, admins);
+app.use('/recipes', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), recipes);
+app.use('/authors', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), authors);
+app.use('/admins', cors({ origin: 'https://keen-turing-04ea0a.netlify.app/' }), admins);
 app.route('/').get((req, res) =>
 	res.send(
 		`<h2>Mögliche Endpunkte:</h2>
